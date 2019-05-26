@@ -13,9 +13,9 @@ function test1()
 
 
     new_pop(t) = [Bilevel.generateChild(rand(3)/t, randn(3)/t, 1.0i, 2.0i) for i = 1:100]
-    convergence = [Bilevel.State(c[1], new_pop(1.0t)) for t=1:20]
+    convergence = [Bilevel.State(c[t], new_pop(1.0t); F_calls=7t + rand(1:100), f_calls=500t + rand(1:400)) for t=1:20]
 
-    p = animateConvergence(convergence)
+    p = animateConvergence(convergence; legend=false)
     # gif(p, "tmp.gif")
 
     true
