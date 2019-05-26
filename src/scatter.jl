@@ -1,6 +1,3 @@
-using Bilevel
-import Plots: scatter, scatter!, savefig, @layout, plot, plot!
-
 function populationToMatrix(pop)
     X = zeros(length(pop), length(pop[1].x))
     Y = zeros(length(pop), length(pop[1].y))
@@ -8,8 +5,8 @@ function populationToMatrix(pop)
     f = zeros(length(pop))
     
     for i = 1:length(pop)
-        X[:,i] = pop[i].x
-        X[:,i] = pop[i].y
+        X[i,:] = pop[i].x
+        Y[i,:] = pop[i].y
         f[i] = pop[i].f
         F[i] = pop[i].F
     end
@@ -29,7 +26,7 @@ function scatter(population::Array{Bilevel.xf_indiv}; kargs...)
     X, Y, F, f = populationToMatrix(population)
 
     l = @layout [a b ; c d]
-    p = plot(title="Population plot", layout=l)
+    p = plot(layout=l; kargs...)
     
 
     scatter!(p[1], X[:,1], X[:,2]; xlabel="x_1", ylabel="x_2")
@@ -41,14 +38,24 @@ function scatter(population::Array{Bilevel.xf_indiv}; kargs...)
 
 end
 
-function test()
-    c = [Bilevel.generateChild(rand(10), rand(10), 1.0i, 2.0i) for i = 1:10]
+function plot(status::Bilevel.State{Int}; kargs...)
+    X, Y, F, f = populationToMatrix(status.population)
+    
+    l = @layout [a b]
 
-    p = scatter(c[1])
-    savefig(p, "tmp.png")
+    p = plot(layout=l; kargs...)
+    scatter!(p[1], X[:,1], X[:,2]; xlabel="x_1", ylabel="x_2")
+    scatter!(p[2], Y[:,1], Y[:,2]; xlabel="y_1", ylabel="y_2")
+    
+    scatter!(p[1],status.best_sol.x[1:1], status.best_sol.x[2:2]; markercolor=:red)
+    scatter!(p[2],status.best_sol.y[1:1], status.best_sol.y[2:2]; markercolor=:red)
 
-    p =  scatter(c)
-    savefig(p, "tmp2.png")
 end
 
-test()
+function plot(convergence::Array{Bilevel.State{Int}})
+    a = @animate for t = 1:length(convergence)
+        plot(convergence[t])
+    end
+    
+    return a
+end
