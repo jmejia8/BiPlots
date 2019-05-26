@@ -3,7 +3,7 @@ module BiPlots
 using Bilevel
 using Reexport
 @reexport using Plots
-import Plots: scatter, scatter!, @layout, plot
+import Plots: scatter, scatter!, @layout, plot, plot!
 
 
 export scatterPopulation, animateConvergence
