@@ -52,7 +52,7 @@ function plot(status::Bilevel.State{Int}; kargs...)
 
 end
 
-function plot(convergence::Array{Bilevel.State{Int}})
+function animateConvergence(convergence::Array{Bilevel.State{Int}})
     a = @animate for t = 1:length(convergence)
         plot(convergence[t])
     end

@@ -6,7 +6,7 @@ using Reexport
 import Plots: scatter, scatter!, @layout, plot
 
 
-export scatterPopulation
+export scatterPopulation, animateConvergence
 
 include("scatter.jl")
 
