@@ -1,7 +1,7 @@
 name = "BiPlots"
 uuid = "8db8bbf8-7f36-11e9-3ce7-2b937b5c74cf"
 authors = ["Jesus Mejia <jesusmejded@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Bilevel = "345d3ba6-d16c-11e8-3a43-33eb7bceec82"
