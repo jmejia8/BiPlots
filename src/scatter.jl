@@ -38,7 +38,7 @@ function scatter(population::Array{Bilevel.xf_indiv}; kargs...)
 
 end
 
-function plot(status::Bilevel.State{Int}, l = @layout [a b]; kargs...)
+function plot(status::Bilevel.State, l = @layout [a b]; kargs...)
     X, Y, F, f = populationToMatrix(status.population)
     
     p = plot(layout=l; kargs...)
@@ -52,7 +52,7 @@ function plot(status::Bilevel.State{Int}, l = @layout [a b]; kargs...)
 
 end
 
-function animateConvergence(convergence::Array{Bilevel.State{Int}}; kargs...)
+function animateConvergence(convergence::Array{Bilevel.State}; kargs...)
     F = [ s.best_sol.F for s in convergence ]
     f = [ s.best_sol.f for s in convergence ]
 
