@@ -11,11 +11,11 @@ uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
 [[Bilevel]]
 deps = ["Calculus", "Distributions", "LinearAlgebra", "Metaheuristics", "Optim", "Printf", "Random", "Test"]
-git-tree-sha1 = "04d5c361ee226e928224a41fb1414153c3ce4e7f"
+git-tree-sha1 = "61c865d9ced88f3a5baaf7bfe56969665c42a551"
 repo-rev = "master"
 repo-url = "https://github.com/jmejia8/Bilevel.jl.git"
 uuid = "345d3ba6-d16c-11e8-3a43-33eb7bceec82"
-version = "0.2.6"
+version = "0.2.7"
 
 [[BinDeps]]
 deps = ["Compat", "Libdl", "SHA", "URIParser"]
